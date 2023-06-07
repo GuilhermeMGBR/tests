@@ -5,7 +5,6 @@ import {
   getDefaultReactotronCustomCommands,
 } from './commandHandler.utils';
 import {createLoggerMock} from '../logger/logger.mock';
-import {ILogger} from '../logger/logger.types';
 import {createQueryClientManagerMock} from '../queryClientManager/queryClientManager.mock';
 
 describe('commandHandler.utils', () => {
