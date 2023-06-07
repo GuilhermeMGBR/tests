@@ -1,0 +1,1 @@
+export {createCommandHandler} from './commandHandler';

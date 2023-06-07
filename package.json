@@ -1,0 +1,61 @@
+{
+  "name": "reactotron-tanstack-react-query",
+  "version": "0.0.1",
+  "description": "Integrate Reactotron with the new version of React Query, TanStack Query!",
+  "main": "./src/reactotron-tanstack-react-query",
+  "author": "Guilherme Martins Garcia <plaice-smiths00@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "tsc",
+    "test": "jest",
+    "start": "react-native start",
+    "pre-commit": "yarn type-check && yarn lint && yarn format-check && npm test",
+    "format": "yarn prettier --config .prettierrc.js --ignore-path .gitignore --write .",
+    "format-check": "yarn prettier --config .prettierrc.js --ignore-path .gitignore --check .",
+    "type-check": "tsc --noEmit",
+    "sonar": "yarn jest --coverage; npx sonarqube-scanner",
+    "l": "yarn lint",
+    "fmt": "yarn format",
+    "fmtc": "yarn format-check",
+    "tc": "yarn type-check",
+    "t": "yarn test",
+    "snr": "yarn sonar",
+    "b": "yarn build",
+    "s": "yarn start",
+    "pc": "yarn pre-commit",
+    "last": "yarn pre-commit"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.29.5",
+    "react": "^18.2.0",
+    "react-native": "^0.71.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "@babel/runtime": "^7.21.5",
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@tsconfig/react-native": "^3.0.2",
+    "@types/jest": "^29.5.1",
+    "@types/react": "^18.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "babel-jest": "^29.5.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "prettier": "^2.8.8",
+    "reactotron-react-native": "^5.0.3",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testResultsProcessor": "jest-sonar-reporter"
+  }
+}
