@@ -24,7 +24,7 @@ describe('commandHandler.utils', () => {
     'delegates the query fetching to the QueryClientManager (%s)',
     (_case: string, defaultLogger: boolean) => {
       const mockQueryClientManager = createQueryClientManagerMock();
-      const mockLogger = defaultLogger ? undefined : createLoggerMock();
+      const mockLogger = createLoggerMock();
 
       if (defaultLogger) {
         mockConsoleLogOnce();
@@ -32,14 +32,18 @@ describe('commandHandler.utils', () => {
 
       const testQueryHash = 'queryHash_XYZ';
 
-      fetchQueryByHash(testQueryHash, mockQueryClientManager, mockLogger);
+      fetchQueryByHash(
+        testQueryHash,
+        mockQueryClientManager,
+        defaultLogger ? undefined : mockLogger,
+      );
 
       expect(mockQueryClientManager.fetchQueryByHash).toHaveBeenCalledWith(
         testQueryHash,
       );
 
       expect(
-        defaultLogger ? mockConsoleLog : (mockLogger as ILogger).log,
+        defaultLogger ? mockConsoleLog : mockLogger.log,
       ).toHaveBeenCalledWith(`Fetching ${testQueryHash}`);
     },
   );
@@ -51,7 +55,7 @@ describe('commandHandler.utils', () => {
     'creates the default text input command (%s)',
     (_case: string, defaultLogger: boolean) => {
       const mockQueryClientManager = createQueryClientManagerMock();
-      const mockLogger = defaultLogger ? undefined : createLoggerMock();
+      const mockLogger = createLoggerMock();
 
       if (defaultLogger) {
         mockConsoleLogOnce();
@@ -59,7 +63,9 @@ describe('commandHandler.utils', () => {
 
       const queryHashInput = 'queryHash_XYZ';
 
-      const command = fetchQueryByInputHash(mockLogger)(mockQueryClientManager);
+      const command = fetchQueryByInputHash(
+        defaultLogger ? undefined : mockLogger,
+      )(mockQueryClientManager);
       expect(command).not.toBeNull();
 
       command.handler({queryHash: queryHashInput});
@@ -69,7 +75,7 @@ describe('commandHandler.utils', () => {
       );
 
       expect(
-        defaultLogger ? mockConsoleLog : (mockLogger as ILogger).log,
+        defaultLogger ? mockConsoleLog : mockLogger.log,
       ).toHaveBeenCalled();
     },
   );
@@ -81,7 +87,7 @@ describe('commandHandler.utils', () => {
     'creates a command from a query key (%s)',
     (_case: string, defaultLogger: boolean) => {
       const mockQueryClientManager = createQueryClientManagerMock();
-      const mockLogger = defaultLogger ? undefined : createLoggerMock();
+      const mockLogger = createLoggerMock();
 
       if (defaultLogger) {
         mockConsoleLogOnce();
@@ -91,7 +97,7 @@ describe('commandHandler.utils', () => {
 
       const command = fetchQueryBySetHash(
         testKey,
-        mockLogger,
+        defaultLogger ? undefined : mockLogger,
       )(mockQueryClientManager);
 
       expect(command).not.toBeNull();
@@ -103,7 +109,7 @@ describe('commandHandler.utils', () => {
 
       expect(mockQueryClientManager.fetchQueryByHash).toHaveBeenCalled();
       expect(
-        defaultLogger ? mockConsoleLog : (mockLogger as ILogger).log,
+        defaultLogger ? mockConsoleLog : mockLogger.log,
       ).toHaveBeenCalled();
     },
   );
