@@ -30,6 +30,7 @@ module.exports = {
     semi: ['error', 'always'],
     'prettier/prettier': ['error'],
     'linebreak-style': ['error', 'unix'],
+    'prefer-optional-chain': 'off',
   },
   settings: {
     react: {
