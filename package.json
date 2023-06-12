@@ -26,6 +26,11 @@
     "pc": "yarn pre-commit",
     "last": "yarn pre-commit"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
   "dependencies": {
     "@tanstack/react-query": "^4.29.5",
     "react": "^18.2.0",
