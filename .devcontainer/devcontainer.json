@@ -1,0 +1,28 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Node.js with Typescript",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:0-18-bullseye",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {},
+
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "sonarsource.sonarlint-vscode",
+        "dbaeumer.vscode-eslint",
+        "usernamehw.errorlens",
+        "yoavbls.pretty-ts-errors",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+
+  "forwardPorts": [],
+
+  "postCreateCommand": "yarn install"
+}
