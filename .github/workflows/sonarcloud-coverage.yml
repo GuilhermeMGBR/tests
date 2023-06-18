@@ -1,0 +1,39 @@
+name: SonarCloud CI # Sonar analysis with code coverage
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Yarn
+        if: ${{ !env.ACT }} # skips this step when testing locally with 'act'
+        run: npm install --global yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Sonarqube Local Scan
+        if: ${{ env.ACT }} # runs this step only when testing locally with 'act'
+        run: |
+          yarn sonar
+
+      - name: SonarCloud Scan
+        if: ${{ !env.ACT }} # skips this step when testing locally with 'act'
+        run: |
+          yarn sonar \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=${{ secrets.SONARCLOUD_ORGANIZATION }} \
+            -Dsonar.login=${{ secrets.SONARCLOUD_TOKEN }}

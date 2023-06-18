@@ -2,5 +2,6 @@
 .DS_Store
 /tmp
 node_modules
+.scannerwork
 coverage
 test-report.xml
