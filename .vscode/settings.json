@@ -1,11 +1,14 @@
 {
-    "cSpell.words": [
-        "sonarcloud",
-        "sonarqube",
-        "JDBC",
-        "reactotron",
-        "tanstack",
-        "Guilherme",
-        "fmtc"
-    ]
+  "cSpell.words": [
+    "devcontainers",
+    "fmtc",
+    "Guilherme",
+    "JDBC",
+    "reactotron",
+    "sonarcloud",
+    "sonarlint",
+    "sonarqube",
+    "sonarsource",
+    "tanstack"
+  ]
 }
