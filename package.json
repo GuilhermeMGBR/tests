@@ -11,8 +11,8 @@
     "test": "jest",
     "start": "react-native start",
     "pre-commit": "yarn type-check && yarn lint && yarn format-check && npm test",
-    "format": "yarn prettier --config .prettierrc.js --ignore-path .gitignore --write .",
-    "format-check": "yarn prettier --config .prettierrc.js --ignore-path .gitignore --check .",
+    "format": "yarn prettier --ignore-path .gitignore --write .",
+    "format-check": "yarn prettier --ignore-path .gitignore --check .",
     "type-check": "tsc --noEmit",
     "sonar": "yarn jest --coverage; npx sonarqube-scanner",
     "l": "yarn lint",
@@ -57,5 +57,12 @@
   "jest": {
     "preset": "react-native",
     "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSameLine": true,
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }
