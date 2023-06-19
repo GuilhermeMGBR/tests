@@ -24,5 +24,5 @@
 
   "forwardPorts": [],
 
-  "postCreateCommand": "yarn install"
+  "postCreateCommand": "yarn install; npx husky install"
 }
