@@ -25,13 +25,25 @@ function convertToBabelAliases(tsConfigPaths) {
 }
 
 const babelConfig = {
-  presets: ['module:metro-react-native-babel-preset'],
+  sourceMaps: 'inline',
+  presets: [
+    'module:metro-react-native-babel-preset',
+    '@babel/preset-typescript',
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: true,
+        },
+      },
+    ],
+  ],
   plugins: [
     [
       'module-resolver',
       {
-        root: ['./src'],
-        extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
+        root: ['.'],
+        extensions: ['.js', '.ts', '.tsx', '.json'],
         alias: convertToBabelAliases(compilerOptions?.paths),
       },
     ],

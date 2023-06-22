@@ -37,5 +37,5 @@ module.exports = {
       version: 'detect',
     },
   },
-  ignorePatterns: ['coverage/*'],
+  ignorePatterns: ['coverage/*', 'dist/*'],
 };
